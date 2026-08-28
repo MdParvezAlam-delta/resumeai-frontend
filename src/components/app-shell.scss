@@ -1,0 +1,20 @@
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; background: #0d1117; }
+.site-header { width: 100%; min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 0 5vw; border-bottom: 1px solid #2a3348; background: #161b22; }
+.brand { display: inline-flex; align-items: center; gap: .65rem; color: #f4f1ea; font-size: 1.2rem; font-weight: 800; letter-spacing: .02em; text-decoration: none; }
+.brand > span:last-child span { color: #ff2d78; }
+.brand-mark { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 8px; color: #ffffff; background: #ff2d78; font-size: 1rem; }
+.site-nav { display: flex; align-items: center; gap: clamp(.8rem, 2.5vw, 2rem); color: #aeb4bc; font-size: .9rem; }
+.site-nav a { color: inherit; text-decoration: none; transition: color 160ms ease; }
+.site-nav a:hover, .site-nav a:focus-visible { color: #ff6b9d; }
+.nav-cta { padding: .55rem 1rem; border: 1px solid #ff2d78; border-radius: 6px; color: #ff6b9d !important; }
+.nav-user { color: #f4f1ea; white-space: nowrap; }
+.nav-logout { padding: .55rem 1rem; border: 1px solid #4b5563; border-radius: 6px; color: #aeb4bc; background: transparent; font: inherit; cursor: pointer; transition: border-color 160ms ease, color 160ms ease; }
+.nav-logout:hover, .nav-logout:focus-visible { border-color: #ff2d78; color: #ff6b9d; }
+.app-shell__content { flex: 1; }
+.site-footer { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.5rem 5vw; border-top: 1px solid #2a3348; background: #161b22; color: #7d8590; font-size: .8rem; }
+.site-footer > div:first-child { display: flex; flex-direction: column; gap: .3rem; }
+.site-footer strong { color: #f4f1ea; font-size: .95rem; }
+.site-footer__links { display: flex; gap: 1.25rem; }
+.site-footer__links a { color: inherit; text-decoration: none; }
+.site-footer__links a:hover, .site-footer__links a:focus-visible { color: #ff6b9d; }
+@media (max-width: 640px) { .site-header { min-height: 64px; padding: 0 1rem; } .site-nav { gap: .75rem; font-size: .78rem; } .nav-user { display: none; } .site-footer { align-items: flex-start; flex-direction: column; padding: 1.25rem 1rem; } }

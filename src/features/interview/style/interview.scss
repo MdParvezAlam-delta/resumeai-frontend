@@ -31,6 +31,34 @@ $severity-low: #3fb950;
     align-items: stretch;
     padding: 1.5rem;
     box-sizing: border-box;
+
+    // Mobile adjustments
+    @media (max-width: 768px) {
+        padding: 0.5rem;
+    }
+}
+
+// ── Loading Screen ─────────────────────────────────────────────────────────────
+.loading-screen {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg-page;
+    color: $text-primary;
+    font-family: $font-stack;
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+
+        // Mobile: Smaller font
+        @media (max-width: 768px) {
+            font-size: 1.2rem;
+        }
+    }
 }
 
 // ── 3-Column Layout ───────────────────────────────────────────────────────────
@@ -43,12 +71,30 @@ $severity-low: #3fb950;
     border: 1px solid $border-color;
     border-radius: 1rem;
     justify-content: space-between;
+
+    // Mobile: Stack vertically
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        border-radius: 0.5rem;
+    }
+
+    // Mobile: Remove border and adjust spacing
+    @media (max-width: 768px) {
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+    }
 }
 
 .interview-divider {
     width: 1px;
     background-color: $border-color;
     flex-shrink: 0;
+
+    // Hide dividers on mobile since layout stacks
+    @media (max-width: 1024px) {
+        display: none;
+    }
 }
 
 // ── Left Nav ─────────────────────────────────────────────────────────────────
@@ -61,6 +107,37 @@ $severity-low: #3fb950;
     justify-content: space-between;
     gap: 0.25rem;
 
+    // Tablet: Reduce width
+    @media (max-width: 1024px) {
+        width: 180px;
+        padding: 1.25rem 0.75rem;
+    }
+
+    // Mobile: Full width, horizontal layout
+    @media (max-width: 768px) {
+        width: 100%;
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: center;
+        background-color: $bg-card;
+        border-bottom: 1px solid $border-color;
+        border-radius: 0.5rem 0.5rem 0 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        // Mobile: Horizontal layout
+        @media (max-width: 768px) {
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-around;
+        }
+    }
+
     &__label {
         font-size: 0.7rem;
         font-weight: 600;
@@ -69,6 +146,11 @@ $severity-low: #3fb950;
         color: $text-muted;
         padding: 0 0.75rem;
         margin-bottom: 0.5rem;
+
+        // Mobile: Hide label
+        @media (max-width: 768px) {
+            display: none;
+        }
     }
 
     &__item {
@@ -86,6 +168,17 @@ $severity-low: #3fb950;
         cursor: pointer;
         text-align: left;
         transition: background-color 0.15s, color 0.15s;
+
+        // Mobile: Adjust padding and layout
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 0.3rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+            min-width: 0;
+            flex: 1;
+            text-align: center;
+        }
 
         &:hover {
             background-color: $bg-panel;
@@ -122,6 +215,19 @@ $severity-low: #3fb950;
     section {
         min-height: 100%;
     }
+
+    // Tablet: Reduce padding
+    @media (max-width: 1024px) {
+        padding: 1.25rem 1.5rem;
+        max-height: calc(100vh - 2rem);
+    }
+
+    // Mobile: Full width, adjust padding
+    @media (max-width: 768px) {
+        padding: 1rem;
+        max-height: none;
+        padding-bottom: 2rem;
+    }
 }
 
 .content-header {
@@ -132,11 +238,24 @@ $severity-low: #3fb950;
     padding-bottom: 1rem;
     border-bottom: 1px solid $border-color;
 
+    // Mobile: Stack vertically and center
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
     h2 {
         font-size: 1.1rem;
         font-weight: 700;
         color: $text-primary;
         margin: 0;
+
+        // Mobile: Smaller font
+        @media (max-width: 768px) {
+            font-size: 1rem;
+        }
     }
 
     &__count {
@@ -146,6 +265,12 @@ $severity-low: #3fb950;
         padding: 0.15rem 0.6rem;
         border-radius: 2rem;
         border: 1px solid $border-color;
+
+        // Mobile: Smaller font
+        @media (max-width: 768px) {
+            font-size: 0.75rem;
+            padding: 0.1rem 0.5rem;
+        }
     }
 }
 
@@ -174,6 +299,12 @@ $severity-low: #3fb950;
         padding: 0.9rem 1rem;
         cursor: pointer;
         user-select: none;
+
+        // Mobile: Adjust padding and layout
+        @media (max-width: 768px) {
+            padding: 0.75rem;
+            gap: 0.5rem;
+        }
     }
 
     &__index {
@@ -195,6 +326,12 @@ $severity-low: #3fb950;
         font-weight: 500;
         color: $text-primary;
         line-height: 1.5;
+
+        // Mobile: Smaller font
+        @media (max-width: 768px) {
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
     }
 
     &__chevron {
@@ -216,6 +353,13 @@ $severity-low: #3fb950;
         gap: 0.75rem;
         border-top: 1px solid $border-color;
         padding-top: 0.75rem;
+
+        // Mobile: Adjust padding
+        @media (max-width: 768px) {
+            padding: 0 0.75rem 0.75rem;
+            padding-top: 0.5rem;
+            gap: 0.5rem;
+        }
     }
 
     &__section {
@@ -228,6 +372,12 @@ $severity-low: #3fb950;
             font-size: 0.835rem;
             color: color.adjust($text-muted, $lightness: 15%);
             line-height: 1.6;
+
+            // Mobile: Smaller font
+            @media (max-width: 768px) {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
         }
     }
 
@@ -270,6 +420,11 @@ $severity-low: #3fb950;
         width: 2px;
         background: linear-gradient(to bottom, $accent, rgba($accent, 0.1));
         border-radius: 1px;
+
+        // Mobile: Adjust position
+        @media (max-width: 768px) {
+            left: 20px;
+        }
     }
 }
 
@@ -279,6 +434,12 @@ $severity-low: #3fb950;
     gap: 0.5rem;
     padding: 0.75rem 0 0.75rem 3.5rem;
     position: relative;
+
+    // Mobile: Adjust padding
+    @media (max-width: 768px) {
+        padding: 0.6rem 0 0.6rem 2.5rem;
+        gap: 0.4rem;
+    }
 
     &::before {
         content: '';
@@ -290,6 +451,14 @@ $severity-low: #3fb950;
         border-radius: 50%;
         background-color: $bg-card;
         border: 2px solid $accent;
+
+        // Mobile: Adjust position
+        @media (max-width: 768px) {
+            left: 13px;
+            top: 0.85rem;
+            width: 12px;
+            height: 12px;
+        }
     }
 
     &__header {
@@ -313,6 +482,11 @@ $severity-low: #3fb950;
         font-size: 0.95rem;
         font-weight: 600;
         color: $text-primary;
+
+        // Mobile: Smaller font
+        @media (max-width: 768px) {
+            font-size: 0.9rem;
+        }
     }
 
     &__tasks {
@@ -330,6 +504,13 @@ $severity-low: #3fb950;
             font-size: 0.845rem;
             color: color.adjust($text-muted, $lightness: 12%);
             line-height: 1.5;
+
+            // Mobile: Smaller font
+            @media (max-width: 768px) {
+                font-size: 0.8rem;
+                line-height: 1.4;
+                gap: 0.4rem;
+            }
         }
     }
 
@@ -340,6 +521,11 @@ $severity-low: #3fb950;
         border-radius: 50%;
         background-color: $text-muted;
         margin-top: 8px;
+
+        // Mobile: Adjust margin
+        @media (max-width: 768px) {
+            margin-top: 6px;
+        }
     }
 }
 
@@ -351,6 +537,22 @@ $severity-low: #3fb950;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+
+    // Tablet: Reduce width
+    @media (max-width: 1024px) {
+        width: 200px;
+        padding: 1.25rem 1rem;
+    }
+
+    // Mobile: Full width, stack below content
+    @media (max-width: 768px) {
+        width: 100%;
+        padding: 1rem;
+        background-color: $bg-card;
+        border-top: 1px solid $border-color;
+        border-radius: 0 0 0.5rem 0.5rem;
+        margin-top: 0.5rem;
+    }
 }
 
 .sidebar-divider {
@@ -365,6 +567,14 @@ $severity-low: #3fb950;
     align-items: center;
     gap: 0.6rem;
 
+    // Mobile: Horizontal layout
+    @media (max-width: 768px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
     &__label {
         font-size: 0.75rem;
         font-weight: 600;
@@ -373,6 +583,12 @@ $severity-low: #3fb950;
         color: $text-muted;
         margin: 0;
         align-self: flex-start;
+
+        // Mobile: Center align
+        @media (max-width: 768px) {
+            align-self: center;
+            margin-bottom: 0;
+        }
     }
 
     &__ring {
@@ -384,6 +600,12 @@ $severity-low: #3fb950;
         align-items: center;
         justify-content: center;
         border: 4px solid;
+
+        // Mobile: Smaller size
+        @media (max-width: 768px) {
+            width: 70px;
+            height: 70px;
+        }
 
         &.score--high {
             border-color: $severity-low;
@@ -403,6 +625,11 @@ $severity-low: #3fb950;
         font-weight: 800;
         color: $text-primary;
         line-height: 1;
+
+        // Mobile: Smaller font
+        @media (max-width: 768px) {
+            font-size: 1.3rem;
+        }
     }
 
     &__pct {
@@ -416,6 +643,11 @@ $severity-low: #3fb950;
         font-size: 0.75rem;
         color: $severity-low;
         text-align: center;
+
+        // Mobile: Left align
+        @media (max-width: 768px) {
+            text-align: left;
+        }
     }
 }
 
@@ -438,6 +670,11 @@ $severity-low: #3fb950;
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
+
+        // Mobile: Center align tags
+        @media (max-width: 768px) {
+            justify-content: center;
+        }
     }
 }
 
@@ -448,6 +685,12 @@ $severity-low: #3fb950;
     border-radius: 0.4rem;
     border: 1px solid;
     cursor: default;
+
+    // Mobile: Smaller padding and font
+    @media (max-width: 768px) {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
 
     &--high {
         color: $severity-high;

@@ -8,6 +8,14 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 
+    // Mobile: Smaller padding
+    @media (max-width: 768px) {
+        padding-inline: 1rem;
+        padding-block: 0.6rem;
+        border-radius: 0.8rem;
+        font-size: 0.9rem;
+    }
+
     &.primary-button{
         background-color: #ff2d2da0;
         color: white;
@@ -21,6 +29,6 @@
         color: gold;
         font-weight: bolder;
     }
-       
-    
-    }
+
+
+}

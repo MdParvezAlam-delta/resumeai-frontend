@@ -8,6 +8,7 @@ const Home = () => {
     const { loading, generateReport,reports } = useInterview()
     const [ jobDescription, setJobDescription ] = useState("")
     const [ selfDescription, setSelfDescription ] = useState("")
+    const [ resumeName, setResumeName ] = useState("")
     const resumeInputRef = useRef()
 
     const navigate = useNavigate()
@@ -31,7 +32,7 @@ const Home = () => {
             if (err.response?.status === 401) {
                 setError("You are not authenticated. Please log in again.")
             } else if (err.response?.data?.message) {
-                setError(err.response.data.message)
+                setError(err.response.data.error || err.response.data.message)
             } else {
                 setError(err.message || "Failed to generate report. Please try again.")
             }
@@ -74,7 +75,7 @@ const Home = () => {
                             placeholder={`Paste the full job description here...\ne.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScript, and large-scale system design...'`}
                             maxLength={5000}
                         />
-                        <div className='char-counter'>0 / 5000 chars</div>
+                        <div className='char-counter'>{jobDescription.length} / 5000 chars</div>
                     </div>
 
                     {/* Vertical Divider */}
@@ -100,8 +101,16 @@ const Home = () => {
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 16 12 12 8 16" /><line x1="12" y1="12" x2="12" y2="21" /><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" /></svg>
                                 </span>
                                 <p className='dropzone__title'>Click to upload or drag &amp; drop</p>
-                                <p className='dropzone__subtitle'>PDF or DOCX (Max 5MB)</p>
-                                <input ref={resumeInputRef} hidden type='file' id='resume' name='resume' accept='.pdf,.docx' />
+                                <p className='dropzone__subtitle'>{resumeName || "PDF or DOCX (Max 5MB)"}</p>
+                                <input
+                                    ref={resumeInputRef}
+                                    hidden
+                                    type='file'
+                                    id='resume'
+                                    name='resume'
+                                    accept='.pdf,.docx'
+                                    onChange={(e) => setResumeName(e.target.files?.[0]?.name || "")}
+                                />
                             </label>
                         </div>
 
@@ -117,6 +126,7 @@ const Home = () => {
                                 name='selfDescription'
                                 className='panel__textarea panel__textarea--short'
                                 placeholder="Briefly describe your experience, key skills, and years of experience if you don't have a resume handy..."
+                                maxLength={1000}
                             />
                         </div>
 

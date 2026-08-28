@@ -32,6 +32,34 @@ main {
       padding-block: 0.75rem;
       border-radius: 0.75rem;
     }
+
+    .password-input {
+      position: relative;
+
+      input {
+        width: 100%;
+        padding-right: 3rem;
+      }
+
+      .password-toggle {
+        position: absolute;
+        top: 50%;
+        right: 0.75rem;
+        transform: translateY(-50%);
+        border: none;
+        padding: 0.25rem;
+        color: #555;
+        background: transparent;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      .password-toggle:focus-visible {
+        outline: 2px solid #ff2d78;
+        outline-offset: 2px;
+      }
+    }
   }
 
   a{

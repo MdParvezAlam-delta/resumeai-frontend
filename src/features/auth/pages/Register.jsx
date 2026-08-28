@@ -8,14 +8,15 @@ const navigate = useNavigate()                                                  
     const [ username, setUsername ] = useState("")
     const [ email, setEmail ] = useState("")
     const [ password, setPassword ] = useState("")
+    const [ showPassword, setShowPassword ] = useState(false)
 
 
     const {loading,handleRegister} = useAuth()
 
   const handleSubmit = async (e) => {
         e.preventDefault()
-        await handleRegister({username,email,password})
-        navigate("/")
+      const registered = await handleRegister({username,email,password})
+      if (registered) navigate("/")
     }
 
      if(loading){
@@ -45,9 +46,14 @@ const navigate = useNavigate()                                                  
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input
-                            onChange={(e) => { setPassword(e.target.value) }}
-                            type="password" id="password" name='password' placeholder='Enter password' />
+                        <div className="password-input">
+                            <input
+                                onChange={(e) => { setPassword(e.target.value) }}
+                                type={showPassword ? "text" : "password"} id="password" name='password' placeholder='Enter password' />
+                            <button type="button" className="password-toggle" onClick={() => setShowPassword(value => !value)} aria-label={showPassword ? "Hide password" : "Show password"}>
+                                👁
+                            </button>
+                        </div>
                     </div>
 
                     <button className='button primary-button' >Register</button>

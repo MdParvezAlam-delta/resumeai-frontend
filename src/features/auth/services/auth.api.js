@@ -2,8 +2,7 @@ import axios from "axios"
 
 
 const api = axios.create({
-    baseURL:  "https://resume-ai-backend-1-28wv.onrender.com",
-    // baseURL: import.meta.env.VITE_API_URL 
+    baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000",
     withCredentials: true                                                                             // Axios by default doesn't give access to cookies. If we set this to true, the server can read and set cookies from the backend response.
 })
 
@@ -20,7 +19,7 @@ export async function register({ username, email, password }) {
     } catch (err) {
 
         console.log(err)
-
+        throw err
     }
 
 }
