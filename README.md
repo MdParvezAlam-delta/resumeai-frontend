@@ -24,21 +24,7 @@ ResumeAI is a React and Vite frontend for creating personalized interview prepar
 npm install
 ```
 
-## Environment Variables
 
-Create a `.env` file in this directory:
-
-```env
-VITE_API_URL=http://localhost:3000
-```
-
-For a Vercel deployment, set `VITE_API_URL` in the Vercel project environment variables to the public backend URL:
-
-```env
-VITE_API_URL=https://your-backend.onrender.com
-```
-
-Do not use the Vercel frontend URL as `VITE_API_URL`. Vite embeds this value during the production build, so redeploy Vercel after changing it.
 
 ## Development
 
