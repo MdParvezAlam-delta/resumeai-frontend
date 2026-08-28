@@ -1,27 +1,75 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-# resume-ai-Frontend
-This is the frontend part of resume-ai project.
-=======
->>>>>>> 027d098
-# React + Vite
+# ResumeAI Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ResumeAI is a React and Vite frontend for creating personalized interview preparation reports and tailored resumes with AI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- User registration, login, logout, and session restoration
+- Resume upload and self-description input
+- AI-generated interview preparation reports
+- Technical and behavioral interview questions
+- Skill-gap analysis and preparation plans
+- Resume PDF generation and download
+- Protected interview report pages
 
-## React Compiler
+## Requirements
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 18 or newer
+- npm
+- The ResumeAI backend running locally or deployed on Render
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-<<<<<<< HEAD
-=======
->>>>>>> e020d1d (Initial frontend commit)
->>>>>>> 027d098
+```bash
+npm install
+```
+
+## Environment Variables
+
+Create a `.env` file in this directory:
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+
+For a Vercel deployment, set `VITE_API_URL` in the Vercel project environment variables to the public backend URL:
+
+```env
+VITE_API_URL=https://your-backend.onrender.com
+```
+
+Do not use the Vercel frontend URL as `VITE_API_URL`. Vite embeds this value during the production build, so redeploy Vercel after changing it.
+
+## Development
+
+Start the frontend locally:
+
+```bash
+npm run dev
+```
+
+The development server runs at `http://localhost:5173`. The backend must be available at `http://localhost:3000` when using the local API URL.
+
+## Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Create a production build |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+## Application Routes
+
+| Route | Access |
+| --- | --- |
+| `/login` | Public |
+| `/register` | Public |
+| `/` | Authenticated users |
+| `/interview/:interviewId` | Authenticated users |
+
+## Deployment
+
+Deploy the `Frontend` directory as the Vercel project root. Configure `VITE_API_URL` in Vercel and redeploy whenever the backend URL changes.
+
+The backend must allow the Vercel deployment origin through CORS and must support credentials for authentication cookies.
